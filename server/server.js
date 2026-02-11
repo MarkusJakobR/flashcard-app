@@ -7,7 +7,7 @@ const app = express();
 // Allow requests from your frontend
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend URL
+    origin: "http://localhost:5173", // your React dev URL
     credentials: true,
   }),
 );
@@ -16,4 +16,4 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.send("API running"));
 
-app.listen(5000, () => console.log("Server on port 5000"));
+app.listen(4000, () => console.log("Server on port 4000"));
