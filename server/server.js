@@ -1,6 +1,8 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config();
+const verifyUser = require("./middleware/verifyUser");
 
 const supabase = require("./config/supabase");
 
@@ -24,6 +26,14 @@ app.get("/test-db", async (req, res) => {
 
   if (error) return res.status(500).json(error);
   res.json(data);
+});
+
+app.get("/me", verifyUser, (req, res) => {
+  res.json({
+    message: "Authenticated",
+    userId: req.user.id,
+    email: req.user.email,
+  });
 });
 
 app.listen(4000, () => console.log("Server on port 4000"));
