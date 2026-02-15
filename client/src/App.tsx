@@ -1,15 +1,14 @@
-import { useEffect } from "react";
-import api from "./api";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
-  useEffect(() => {
-    api
-      .get("/")
-      .then((res) => console.log(res.data))
-      .catch((err) => console.error(err));
-  }, []);
-
-  return <h1>Check console</h1>;
+  return (
+    <div>
+      <Register />
+      <hr />
+      <Login />
+    </div>
+  );
 }
 
 export default App;

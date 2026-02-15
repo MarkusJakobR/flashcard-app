@@ -1,24 +1,24 @@
 import { useState } from "react";
-import { signIn } from "../services/authService";
+import { signUp } from "../services/authService";
 
-const Login = () => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { error } = await signIn(email, password);
+    const { error } = await signUp(email, password);
 
     if (error) {
       console.error(error.message);
     } else {
-      alert("Logged in successfully");
+      alert("Check your email to confirm signup");
     }
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <h2>Login</h2>
+    <form onSubmit={handleRegister}>
+      <h2>Register</h2>
       <input
         type="email"
         placeholder="email"
@@ -31,9 +31,9 @@ const Login = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button type="submit">Login</button>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
 
-export default Login;
+export default Register;
