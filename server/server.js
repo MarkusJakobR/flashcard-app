@@ -6,6 +6,8 @@ const verifyUser = require("./middleware/verifyUser");
 
 const supabase = require("./config/supabase");
 
+const deckRoutes = require("./routes/deckRoutes");
+
 const app = express();
 
 // Allow requests from your frontend
@@ -35,5 +37,7 @@ app.get("/me", verifyUser, (req, res) => {
     email: req.user.email,
   });
 });
+
+app.use("/decks", deckRoutes);
 
 app.listen(4000, () => console.log("Server on port 4000"));
