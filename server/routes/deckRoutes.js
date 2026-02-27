@@ -10,7 +10,10 @@ router.get("/", verifyUser, async (req, res) => {
     .select("*")
     .eq("user_id", req.user.id);
 
-  if (error) return res.status(500).json(error);
+  if (error)
+    return res
+      .status(500)
+      .json({ message: "Failed to fetch decks", details: error.message });
   res.json(data);
 });
 
